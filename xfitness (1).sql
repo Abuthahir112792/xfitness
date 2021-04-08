@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2021 at 06:53 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Apr 08, 2021 at 06:11 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,6 +46,15 @@ CREATE TABLE `tbl_addresses` (
   `is_default` varchar(10) DEFAULT NULL,
   `created_at` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_addresses`
+--
+
+INSERT INTO `tbl_addresses` (`id`, `user_id`, `pincode`, `building_name`, `road_area_colony`, `city`, `district`, `state`, `country`, `landmark`, `name`, `email`, `mobile_no`, `alter_mobile_no`, `address_type`, `is_default`, `created_at`) VALUES
+(1, 2, '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'Amir', 'Amir@gmail.com', '31326773', '31326773', 'Home ', 'true', '1617529114'),
+(2, 3, '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'ameen', 'ameen@gmail.com', '23456789', '23456789', 'Home ', 'true', '1617547036'),
+(3, 1, '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'Abu', 'abusuhood0@gmail.com', '31326773', '31326773', 'Home ', 'true', '1617607408');
 
 -- --------------------------------------------------------
 
@@ -166,9 +175,7 @@ CREATE TABLE `tbl_banner` (
 --
 
 INSERT INTO `tbl_banner` (`id`, `banner_title`, `banner_slug`, `banner_desc`, `banner_image`, `product_ids`, `offer_id`, `created_at`, `status`) VALUES
-(1, 'HOME', 'home', '<p>HOME</p>\r\n', '03042021073046_89013.jpg', '', 0, '1617415246', 1),
-(2, 'bannar1', 'bannar1', '<p>bannar1</p>\r\n', '03042021073110_80861.jpg', '', 0, '1617415270', 1),
-(3, 'bannar3', 'bannar3', '<p>bannar3</p>\r\n', '03042021073131_44421.jpg', '', 0, '1617415291', 1);
+(1, 'HOME', 'home', '<p>HOME</p>\r\n', '03042021073046_89013.jpg', '', 0, '1617415246', 1);
 
 -- --------------------------------------------------------
 
@@ -261,10 +268,8 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`id`, `product_id`, `user_id`, `product_qty`, `product_size`, `created_at`, `cart_status`, `last_update`) VALUES
-(1, 2, 1, 1, '', '1617419788', 1, '1617419986'),
-(2, 1, 1, 3, '', '1617420217', 1, '1617420248'),
-(3, 2, 2, 1, '', '1617420861', 1, ''),
-(4, 1, 2, 2, '', '1617423965', 1, '');
+(11, 1, 1, 3, '', '1617622049', 1, '1617630151'),
+(12, 3, 1, 5, '', '1617630818', 1, '');
 
 -- --------------------------------------------------------
 
@@ -305,11 +310,11 @@ CREATE TABLE `tbl_category` (
 --
 
 INSERT INTO `tbl_category` (`id`, `category_name`, `category_slug`, `category_image`, `product_features`, `set_on_home`, `created_at`, `status`) VALUES
-(6, 'INDOOR SPORTS', 'indoor-sports', '15022021065732_50228.jpg', '', 0, '1613395652', 1),
-(7, 'ACCESSORIES', 'accessories', '15022021065822_6372.jpg', '', 0, '1613395703', 1),
-(8, 'OUTDOOR SPORTS', 'outdoor-sports', '15022021065858_67994.jpg', '', 0, '1613395738', 1),
-(9, 'GYM & FITNESS', 'gym-fitness', '15022021065944_92835.jpg', '', 0, '1613395784', 1),
-(10, 'CYCLING', 'cycling', '15022021070103_22677.jpeg', '', 0, '1613395863', 1);
+(6, 'INDOOR SPORTS', 'indoor-sports', '05042021121302_53729.jpg', '', 0, '1613395652', 1),
+(7, 'ACCESSORIES', 'accessories', '05042021121658_63730.jpg', '', 0, '1613395703', 1),
+(8, 'OUTDOOR SPORTS', 'outdoor-sports', '05042021121314_96569.jpg', '', 0, '1613395738', 1),
+(9, 'GYM & FITNESS', 'gym-fitness', '05042021121633_77215.jpg', '', 0, '1613395784', 1),
+(10, 'CYCLING', 'cycling', '05042021121621_41791.jpg', '', 0, '1613395863', 1);
 
 -- --------------------------------------------------------
 
@@ -325,6 +330,14 @@ CREATE TABLE `tbl_contact_list` (
   `contact_msg` text NOT NULL,
   `created_at` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_contact_list`
+--
+
+INSERT INTO `tbl_contact_list` (`id`, `contact_name`, `contact_email`, `contact_subject`, `contact_msg`, `created_at`) VALUES
+(1, 'abu', 'abusuhood0@gmail.com', 2, 'text', '1617781226'),
+(2, 'abu', 'abusuhood0@gmail.com', 2, 'text', '1617781239');
 
 -- --------------------------------------------------------
 
@@ -755,6 +768,16 @@ CREATE TABLE `tbl_order_details` (
   `is_seen` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_order_details`
+--
+
+INSERT INTO `tbl_order_details` (`id`, `user_id`, `coupon_id`, `order_unique_id`, `order_address`, `total_amt`, `discount`, `discount_amt`, `payable_amt`, `new_payable_amt`, `refund_amt`, `refund_per`, `order_date`, `delivery_date`, `order_status`, `delivery_charge`, `pincode`, `building_name`, `road_area_colony`, `city`, `district`, `state`, `country`, `landmark`, `name`, `email`, `mobile_no`, `alter_mobile_no`, `address_type`, `is_seen`) VALUES
+(1, 2, 0, 'ORDwMv22pqm812', 1, 780, '0', 0, 800, 800, 0, 0, '1617529733', '1618134533', 1, '20', '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'Amir', 'Amir@gmail.com', '31326773', '31326773', 'Home ', 0),
+(2, 3, 0, 'ORDOmKIYsqO541', 2, 1060, '0', 0, 1, 1, 0, 0, '1617548479', '1618153279', 1, '20', '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'ameen', 'ameen@gmail.com', '23456789', '23456789', 'Home ', 1),
+(3, 3, 0, 'ORD1jjbTbYk974', 2, 400, '0', 0, 410, 410, 0, 0, '1617550143', '1618154943', 1, '10', '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'ameen', 'ameen@gmail.com', '23456789', '23456789', 'Home ', 1),
+(4, 1, 0, 'ORDrInvGYvb213', 3, 660, '0', 0, 680, 680, 0, 0, '1617607415', '1618212215', 1, '20', '123456', 'PVQ', 'fareej', 'Doha', 'Bin Muhammed', 'Doha', 'Qatar', 'chaya kada', 'Abu', 'abusuhood0@gmail.com', '31326773', '31326773', 'Home ', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -777,6 +800,19 @@ CREATE TABLE `tbl_order_items` (
   `pro_order_status` int(3) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_order_items`
+--
+
+INSERT INTO `tbl_order_items` (`id`, `order_id`, `user_id`, `product_id`, `product_title`, `product_qty`, `product_mrp`, `product_price`, `you_save_amt`, `product_size`, `total_price`, `delivery_charge`, `pro_order_status`) VALUES
+(1, 1, 2, 1, 'Matrix - Suspension Elliptical E3x', 6, 100, 100, 0, '', 600, 10, 1),
+(2, 1, 2, 2, 'Matrix - Suspension', 1, 200, 180, 20, '', 180, 10, 1),
+(3, 2, 3, 1, 'Matrix - Suspension Elliptical E3x', 7, 100, 100, 0, '', 700, 10, 1),
+(4, 2, 3, 2, 'Matrix - Suspension', 2, 200, 180, 20, '', 360, 10, 1),
+(5, 3, 3, 1, 'Matrix - Suspension Elliptical E3x', 4, 100, 100, 0, '', 400, 10, 1),
+(6, 4, 1, 1, 'Matrix - Suspension Elliptical E3x', 3, 100, 100, 0, '', 300, 10, 1),
+(7, 4, 1, 2, 'Matrix - Suspension', 2, 200, 180, 20, '', 360, 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -792,6 +828,23 @@ CREATE TABLE `tbl_order_status` (
   `status_desc` text NOT NULL,
   `created_at` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_order_status`
+--
+
+INSERT INTO `tbl_order_status` (`id`, `order_id`, `user_id`, `product_id`, `status_title`, `status_desc`, `created_at`) VALUES
+(1, 1, 2, 0, '1', 'Your Order has been placed.', '1617529733'),
+(2, 1, 2, 1, '1', 'Your Order has been placed.', '1617529733'),
+(3, 1, 2, 2, '1', 'Your Order has been placed.', '1617529733'),
+(4, 2, 3, 0, '1', 'Your Order has been placed.', '1617548480'),
+(5, 2, 3, 1, '1', 'Your Order has been placed.', '1617548480'),
+(6, 2, 3, 2, '1', 'Your Order has been placed.', '1617548480'),
+(7, 3, 3, 0, '1', 'Your Order has been placed.', '1617550144'),
+(8, 3, 3, 1, '1', 'Your Order has been placed.', '1617550144'),
+(9, 4, 1, 0, '1', 'Your Order has been placed.', '1617607416'),
+(10, 4, 1, 1, '1', 'Your Order has been placed.', '1617607416'),
+(11, 4, 1, 2, '1', 'Your Order has been placed.', '1617607416');
 
 -- --------------------------------------------------------
 
@@ -841,8 +894,10 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`id`, `category_id`, `sub_category_id`, `brand_id`, `offer_id`, `product_title`, `product_slug`, `product_desc`, `product_features`, `featured_image`, `featured_image2`, `size_chart`, `product_mrp`, `selling_price`, `you_save_amt`, `you_save_per`, `other_color_product`, `color`, `product_size`, `product_quantity`, `max_unit_buy`, `delivery_charge`, `total_views`, `total_rate`, `rate_avg`, `is_featured`, `today_deal`, `today_deal_date`, `total_sale`, `created_at`, `seo_title`, `seo_meta_description`, `seo_keywords`, `status`) VALUES
-(1, 8, 74, 5, 0, 'Matrix - Suspension Elliptical E3x', 'matrix-suspension-elliptical-e3x', 'Adjustable brake pad resistance Caged pedals with adjustable straps LED window display and racing saddle Vertical and horizontal seat adjustment Built-in transport wheels and water bottle holder', '<p>An ideal exercise bike for performing cardio workouts from the comfort of home! The Reebok Fitness AR Sprint Bike is designed to deliver smooth rotation with its sturdy 14 kg flywheel. This feature-packed exercise bike boasts dual adjustable seat that facilitates both vertical and horizontal adjustment with additional foam padding. The adjustable saddle offers customisation and laid-back training for long hours. Comes equipped with heavy-duty caged pedals that provide maximum foot protection during workout, it helps users achieve best performance every time. The Reebok AR Sprint Bike offers 6 console programs via the LED window display and allows every user to track performance feedback on real-time basis with respect to distance covered, time, calories burned and so on. Making every user challenge his/her own fitness levels, the Reebok AR Fitness Sprint Bike is one of a kind workout equipment for cardio and aerobic fitness enthusiasts. The adjustable brake pad resistance facilitates workouts at increased intensity levels. Now, it is easy to explore the best way to enhance endurance level from home fitness studio.</p>\r\n\r\n<p> </p>\r\n', '02042021123833_5523.png', '02042021123833_55231.png', '', 100, 100, 0, 0, '', 'White/FFFFFF', '', 0, 10, 10, '17', 0, 0, 0, 0, '0', 0, '1617347313', 'Matrix ', 'Matrix ', 'Matrix ', 1),
-(2, 9, 93, 4, 1, 'Matrix - Suspension', 'matrix-suspension', 'Adjustable brake pad resistance Caged pedals with adjustable straps LED window display and racing saddle Vertical and horizontal seat adjustment Built-in transport wheels and water bottle holder', '<p> </p>\r\n\r\n<p>An ideal exercise bike for performing cardio workouts from the comfort of home! The Reebok Fitness AR Sprint Bike is designed to deliver smooth rotation with its sturdy 14 kg flywheel. This feature-packed exercise bike boasts dual adjustable seat that facilitates both vertical and horizontal adjustment with additional foam padding. The adjustable saddle offers customisation and laid-back training for long hours. Comes equipped with heavy-duty caged pedals that provide maximum foot protection during workout, it helps users achieve best performance every time. The Reebok AR Sprint Bike offers 6 console programs via the LED window display and allows every user to track performance feedback on real-time basis with respect to distance covered, time, calories burned and so on. Making every user challenge his/her own fitness levels, the Reebok AR Fitness Sprint Bike is one of a kind workout equipment for cardio and aerobic fitness enthusiasts. The adjustable brake pad resistance facilitates workouts at increased intensity levels. Now, it is easy to explore the best way to enhance endurance level from home fitness studio.</p>\r\n\r\n<table>\r\n <tbody>\r\n  <tr>\r\n   <td>Flywheel</td>\r\n   <td>14 Kg</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Resistance level</td>\r\n   <td>15 manual resistance levels</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Resistance Type</td>\r\n   <td>Adjustable brake pad resistance</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Manual with 6 console programs</td>\r\n   <td>Manual with 6 console programs</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Console</td>\r\n   <td>LED window display</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Drive</td>\r\n   <td>Chain driven</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Pedal</td>\r\n   <td>Caged pedals with adjustable straps</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Saddle</td>\r\n   <td>Racing saddle</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Transport</td>\r\n   <td>Built-in transport wheels</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Water bottle holder</td>\r\n   <td>Yes</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Power Requirement</td>\r\n   <td>No mains power required</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Batteries</td>\r\n   <td>Included</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Seat Adjustment</td>\r\n   <td>Vertical & horizontal seat adjustment</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Seat Height</td>\r\n   <td>64 cm - 100 cm</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Max. user weight</td>\r\n   <td>100 kg</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Dimension</td>\r\n   <td>116 x 42 x 100 cm</td>\r\n  </tr>\r\n </tbody>\r\n</table>\r\n', '02042021125243_82749.png', '02042021125243_827491.png', '', 200, 180, 20, 10, '', 'White/FFFFFF', '', 0, 5, 10, '42', 0, 0, 0, 0, '0', 0, '1617348163', 'Suspension', 'Suspension', 'Suspension', 1);
+(1, 8, 74, 5, 0, 'Matrix - Suspension Elliptical E3x', 'matrix-suspension-elliptical-e3x', 'Adjustable brake pad resistance Caged pedals with adjustable straps LED window display and racing saddle Vertical and horizontal seat adjustment Built-in transport wheels and water bottle holder', '<p>An ideal exercise bike for performing cardio workouts from the comfort of home! The Reebok Fitness AR Sprint Bike is designed to deliver smooth rotation with its sturdy 14 kg flywheel. This feature-packed exercise bike boasts dual adjustable seat that facilitates both vertical and horizontal adjustment with additional foam padding. The adjustable saddle offers customisation and laid-back training for long hours. Comes equipped with heavy-duty caged pedals that provide maximum foot protection during workout, it helps users achieve best performance every time. The Reebok AR Sprint Bike offers 6 console programs via the LED window display and allows every user to track performance feedback on real-time basis with respect to distance covered, time, calories burned and so on. Making every user challenge his/her own fitness levels, the Reebok AR Fitness Sprint Bike is one of a kind workout equipment for cardio and aerobic fitness enthusiasts. The adjustable brake pad resistance facilitates workouts at increased intensity levels. Now, it is easy to explore the best way to enhance endurance level from home fitness studio.</p>\r\n\r\n<p> </p>\r\n', '02042021123833_5523.png', '02042021123833_55231.png', '', 100, 100, 0, 0, '', 'White/FFFFFF', '', 0, 10, 10, '59', 0, 0, 0, 0, '0', 0, '1617347313', 'Matrix ', 'Matrix ', 'Matrix ', 1),
+(2, 9, 93, 4, 1, 'Matrix - Suspension', 'matrix-suspension', 'Adjustable brake pad resistance Caged pedals with adjustable straps LED window display and racing saddle Vertical and horizontal seat adjustment Built-in transport wheels and water bottle holder', '<p> </p>\r\n\r\n<p>An ideal exercise bike for performing cardio workouts from the comfort of home! The Reebok Fitness AR Sprint Bike is designed to deliver smooth rotation with its sturdy 14 kg flywheel. This feature-packed exercise bike boasts dual adjustable seat that facilitates both vertical and horizontal adjustment with additional foam padding. The adjustable saddle offers customisation and laid-back training for long hours. Comes equipped with heavy-duty caged pedals that provide maximum foot protection during workout, it helps users achieve best performance every time. The Reebok AR Sprint Bike offers 6 console programs via the LED window display and allows every user to track performance feedback on real-time basis with respect to distance covered, time, calories burned and so on. Making every user challenge his/her own fitness levels, the Reebok AR Fitness Sprint Bike is one of a kind workout equipment for cardio and aerobic fitness enthusiasts. The adjustable brake pad resistance facilitates workouts at increased intensity levels. Now, it is easy to explore the best way to enhance endurance level from home fitness studio.</p>\r\n\r\n<table>\r\n <tbody>\r\n  <tr>\r\n   <td>Flywheel</td>\r\n   <td>14 Kg</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Resistance level</td>\r\n   <td>15 manual resistance levels</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Resistance Type</td>\r\n   <td>Adjustable brake pad resistance</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Manual with 6 console programs</td>\r\n   <td>Manual with 6 console programs</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Console</td>\r\n   <td>LED window display</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Drive</td>\r\n   <td>Chain driven</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Pedal</td>\r\n   <td>Caged pedals with adjustable straps</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Saddle</td>\r\n   <td>Racing saddle</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Transport</td>\r\n   <td>Built-in transport wheels</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Water bottle holder</td>\r\n   <td>Yes</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Power Requirement</td>\r\n   <td>No mains power required</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Batteries</td>\r\n   <td>Included</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Seat Adjustment</td>\r\n   <td>Vertical & horizontal seat adjustment</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Seat Height</td>\r\n   <td>64 cm - 100 cm</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Max. user weight</td>\r\n   <td>100 kg</td>\r\n  </tr>\r\n  <tr>\r\n   <td>Dimension</td>\r\n   <td>116 x 42 x 100 cm</td>\r\n  </tr>\r\n </tbody>\r\n</table>\r\n', '02042021125243_82749.png', '02042021125243_827491.png', '', 200, 180, 20, 10, '', 'White/FFFFFF', '', 0, 5, 10, '206', 0, 0, 0, 0, '0', 0, '1617348163', 'Suspension', 'Suspension', 'Suspension', 1),
+(3, 7, 53, 6, 1, 'tredmil', 'tredmil', 'Description', '<p>Description</p>\r\n', '04042021083241_24176.jpg', '04042021083241_241761.jpg', '', 110, 99, 11, 10, '', 'White/FFFFFF', '', 0, 10, 20, '9', 0, 0, 0, 0, '0', 0, '1617548561', 'Tredmile', 'Tredmile', 'Tredmile', 1),
+(4, 9, 93, 5, 0, 'dumbules', 'dumbules', 'test', '<p>test</p>\r\n', '07042021023726_20211.png', '07042021023726_202111.png', '', 130, 130, 0, 0, '', 'White/FFFFFF', '', 0, 10, 10, '9', 0, 0, 0, 0, '0', 0, '1617786446', 'dumbules', 'dumbules', 'dumbules', 1);
 
 -- --------------------------------------------------------
 
@@ -870,7 +925,12 @@ INSERT INTO `tbl_product_images` (`id`, `parent_id`, `image_file`, `type`, `stat
 (5, 2, '02042021125243_82749.png', 'product', 1),
 (6, 2, '02042021125243_827491.png', 'product', 1),
 (7, 2, '02042021125243_827492.png', 'product', 1),
-(8, 2, '02042021125243_827493.png', 'product', 1);
+(8, 2, '02042021125243_827493.png', 'product', 1),
+(9, 3, '04042021083241_24176.jpg', 'product', 1),
+(10, 3, '04042021083241_241761.jpg', 'product', 1),
+(11, 4, '07042021023726_20211.png', 'product', 1),
+(12, 4, '07042021023726_202111.png', 'product', 1),
+(13, 4, '07042021023726_202112.png', 'product', 1);
 
 -- --------------------------------------------------------
 
@@ -906,12 +966,15 @@ CREATE TABLE `tbl_recent_viewed` (
 --
 
 INSERT INTO `tbl_recent_viewed` (`id`, `user_id`, `product_id`, `created_at`) VALUES
-(1, 1, 2, '1617420204'),
+(1, 1, 2, '1617629412'),
 (2, 1, 0, '1617420191'),
-(3, 1, 1, '1617420623'),
+(3, 1, 1, '1617630143'),
 (4, 2, 2, '1617420941'),
 (5, 2, 0, '1617422212'),
-(6, 2, 1, '1617423968');
+(6, 2, 1, '1617423968'),
+(7, 3, 2, '1617550385'),
+(8, 3, 1, '1617550006'),
+(9, 1, 3, '1617630820');
 
 -- --------------------------------------------------------
 
@@ -1198,6 +1261,16 @@ CREATE TABLE `tbl_transaction` (
   `status` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tbl_transaction`
+--
+
+INSERT INTO `tbl_transaction` (`id`, `user_id`, `email`, `order_id`, `order_unique_id`, `gateway`, `payment_amt`, `payment_id`, `razorpay_order_id`, `date`, `status`) VALUES
+(1, 2, 'amir@gmail.com', 1, 'ORDwMv22pqm812', 'cod', '800.00', '0', '0', '1617529733', 1),
+(2, 3, 'ameen@gmail.com', 2, 'ORDOmKIYsqO541', 'cod', '1,080.00', '0', '0', '1617548479', 1),
+(3, 3, 'ameen@gmail.com', 3, 'ORD1jjbTbYk974', 'cod', '410.00', '0', '0', '1617550143', 1),
+(4, 1, 'abusuhood0@gmail.com', 4, 'ORDrInvGYvb213', 'cod', '680.00', '0', '0', '1617607416', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1226,7 +1299,10 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` (`id`, `user_type`, `user_name`, `user_email`, `user_phone`, `user_password`, `user_image`, `device_id`, `player_id`, `created_at`, `auth_id`, `register_platform`, `status`) VALUES
 (1, 'Normal', 'abu', 'abusuhood0@gmail.com', '123456', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '0', '1617419427', NULL, 'web', 1),
-(2, 'Normal', 'amir', 'amir@gmail.com', '111111111', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '0', '1617420720', NULL, 'web', 1);
+(2, 'Normal', 'amir', 'amir@gmail.com', '2222', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '0', '1617420720', NULL, 'web', 1),
+(3, 'Normal', 'ameen', 'ameen@gmail.com', '11111', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '0', '1617543476', NULL, 'web', 1),
+(4, 'Normal', 'Afrid', 'afrid@gmail.com', '22222222', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '0', '1617546152', NULL, 'web', 1),
+(5, 'Normal', 'Ashik', 'ashik@gmail.com', '11111111111', '827ccb0eea8a706c4c34a16891f84e7b', '', '', '0', '1617603363', NULL, 'web', 1);
 
 -- --------------------------------------------------------
 
@@ -1275,7 +1351,8 @@ CREATE TABLE `tbl_verify_code` (
 
 INSERT INTO `tbl_verify_code` (`id`, `user_email`, `verify_code`, `created_at`, `is_verify`) VALUES
 (1, 'unais.whyte@gmail.com', '3804', '1609414470', 0),
-(2, 'abusuhood0@gmail.com', '2436', '1617351672', 0);
+(2, 'abusuhood0@gmail.com', '2436', '1617351672', 0),
+(3, 'ameen@gmail.com', '1006', '1617542953', 0);
 
 -- --------------------------------------------------------
 
@@ -1331,7 +1408,7 @@ CREATE TABLE `tbl_web_settings` (
 --
 
 INSERT INTO `tbl_web_settings` (`id`, `site_name`, `site_description`, `site_keywords`, `copyright_text`, `web_logo_1`, `web_logo_2`, `web_favicon`, `about_page_title`, `about_content`, `about_status`, `faq_content`, `privacy_page_title`, `privacy_content`, `privacy_page_status`, `terms_of_use_page_title`, `terms_of_use_content`, `terms_of_use_page_status`, `refund_return_policy_page_title`, `refund_return_policy`, `refund_return_policy_status`, `cancellation_page_title`, `cancellation_content`, `cancellation_page_status`, `payments_page_title`, `payments_content`, `payments_page_status`, `contact_page_title`, `address`, `contact_number`, `contact_email`, `home_ad`, `home_banner_ad`, `product_ad`, `product_banner_ad`, `android_app_url`, `ios_app_url`, `header_code`, `footer_code`, `libraries_load_from`) VALUES
-(1, 'Xfitness', 'Xfitness', 'shopping cart', 'Copyright © 2020 <a href=\"http://www.xfitness.com\" target=\"_blank\">Xfitness.me</a>. All Rights Reserved.', '10022021080126_43739.png', '10022021080132_879252.png', '10022021080136_97491.png', 'About Us', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', '<h3>1) What kind of customer service do you offer?</h3>\r\n\r\n<p>Our ecommerce consultants are here to answer your questions. In addition to FREE phone support, you can contact our consultants via email or live chat.</p>\r\n\r\n<h3>2) Can I build my new Ecommerce site while my other website is still live?</h3>\r\n\r\n<p>Yes! When you purchase one of our ecommerce solutions you will get a standard 3rd level domain to use while you are building your new website. When you are ready to begin hosting your new online store, you simply change your DNS settings to point your existing domain name to your new site.</p>\r\n\r\n<h3>3) Can I use my own domain name?</h3>\r\n\r\n<p>Absolutely! Simply point your domain directly to your new Network Solutions Ecommerce. You do not need to use a subdomain or any other temporary domain name placeholder.</p>\r\n\r\n<h3>4) Are there any system requirements?</h3>\r\n\r\n<p>To access your Ecommerce control panel, you must have Internet access and use a JavaScript enabled browser. The newest version of Internet Explorer, Firefox, Safari or Chrome are recommended.</p>\r\n', 'Privacy', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', 'Terms of Use', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n\r\n<p> </p>\r\n', 'true', 'Refund Return Policy', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', 'Cancellation Policy', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', '', '', 'true', 'Contact Us', '3rd floor, Shyam Complex, Parivar Park, Near Mayani Chowk, Rajkot - 360005', '+91 922 7777 522', 'info@viaviweb.com', 'false', '', 'false', '', 'https://play.google.com/store/apps/dev?id=7157478532572017100', 'https://apps.apple.com/in/developer/vishal-pamar/id1141291247', '', '', 'cdn');
+(1, 'Xfitness', 'Xfitness', 'shopping cart', 'Copyright © 2020 <a href=\"http://www.xfitness.com\" target=\"_blank\">Xfitness.me</a>. All Rights Reserved.', '10022021080126_43739.png', '10022021080132_879252.png', '10022021080136_97491.png', 'About Us', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', '<h3>1) What kind of customer service do you offer?</h3>\r\n\r\n<p>Our ecommerce consultants are here to answer your questions. In addition to FREE phone support, you can contact our consultants via email or live chat.</p>\r\n\r\n<h3>2) Can I build my new Ecommerce site while my other website is still live?</h3>\r\n\r\n<p>Yes! When you purchase one of our ecommerce solutions you will get a standard 3rd level domain to use while you are building your new website. When you are ready to begin hosting your new online store, you simply change your DNS settings to point your existing domain name to your new site.</p>\r\n\r\n<h3>3) Can I use my own domain name?</h3>\r\n\r\n<p>Absolutely! Simply point your domain directly to your new Network Solutions Ecommerce. You do not need to use a subdomain or any other temporary domain name placeholder.</p>\r\n\r\n<h3>4) Are there any system requirements?</h3>\r\n\r\n<p>To access your Ecommerce control panel, you must have Internet access and use a JavaScript enabled browser. The newest version of Internet Explorer, Firefox, Safari or Chrome are recommended.</p>\r\n', 'Privacy', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', 'Terms of Use', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n\r\n<p> </p>\r\n', 'true', 'Refund Return Policy', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', 'Cancellation Policy', '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.</p>\r\n', 'true', '', '', 'true', 'Contact Us', 'Doha, Qatar', '+974 31404159', 'info@xfitness.com', 'false', '', 'false', '', '', '', '', '', 'cdn');
 
 -- --------------------------------------------------------
 
@@ -1562,7 +1639,7 @@ ALTER TABLE `tbl_wishlist`
 -- AUTO_INCREMENT for table `tbl_addresses`
 --
 ALTER TABLE `tbl_addresses`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
@@ -1604,7 +1681,7 @@ ALTER TABLE `tbl_brands`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_cart_tmp`
@@ -1622,7 +1699,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_contact_list`
 --
 ALTER TABLE `tbl_contact_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_contact_sub`
@@ -1658,31 +1735,31 @@ ALTER TABLE `tbl_offers`
 -- AUTO_INCREMENT for table `tbl_order_details`
 --
 ALTER TABLE `tbl_order_details`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_items`
 --
 ALTER TABLE `tbl_order_items`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_status`
 --
 ALTER TABLE `tbl_order_status`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_product_images`
 --
 ALTER TABLE `tbl_product_images`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_rating`
@@ -1694,7 +1771,7 @@ ALTER TABLE `tbl_rating`
 -- AUTO_INCREMENT for table `tbl_recent_viewed`
 --
 ALTER TABLE `tbl_recent_viewed`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_refund`
@@ -1730,13 +1807,13 @@ ALTER TABLE `tbl_sub_category`
 -- AUTO_INCREMENT for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_verify`
@@ -1748,7 +1825,7 @@ ALTER TABLE `tbl_verify`
 -- AUTO_INCREMENT for table `tbl_verify_code`
 --
 ALTER TABLE `tbl_verify_code`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_web_settings`
@@ -1760,7 +1837,7 @@ ALTER TABLE `tbl_web_settings`
 -- AUTO_INCREMENT for table `tbl_wishlist`
 --
 ALTER TABLE `tbl_wishlist`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
